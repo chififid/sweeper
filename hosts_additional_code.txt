@@ -1,0 +1,7 @@
+127.0.0.1 osu.web.example.com
+127.0.0.1 api.web.example.com
+127.0.0.1 c.web.example.com
+127.0.0.1 a.web.example.com
+127.0.0.1 b.web.example.com
+127.0.0.1 bm6.web.example.com
+127.0.0.1 web.example.com
