@@ -27,18 +27,6 @@ OSU_CLIENT_SECRET = os.getenv("OSU_CLIENT_SECRET")
 
 @app.on_event("startup")
 async def startup_event():
-    url = "{}/oauth/token".format(osu_url)
-    headers = {
-        "Accept": "application/json",
-        "Content-Type": "application/json",
-    }
-    body = {
-        "client_id": int(OSU_CLIENT_ID),
-        "client_secret": OSU_CLIENT_SECRET,
-        "grant_type": "client_credentials",
-        "scope": "public"
-    }
-
     asyncio.get_event_loop().create_task(get_osu_api_token_and_sleep())
 
 
