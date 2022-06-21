@@ -32,12 +32,14 @@ async def startup_event():
 
 async def get_osu_api_token_and_sleep():
     while True:
-        sleep_time = await get_osu_api_token()
+        sleep_time = await get_osu_api_token() 
 
-        await asyncio.sleep(sleep_time - 30)  # Get new api token before last token expires
+        # Get new api token before last token expires
+        await asyncio.sleep(sleep_time - 30) 
 
 
-async def get_osu_api_token() -> int:  # Set osu token in db and return expiration time
+ # Set osu token in db and return expiration time
+async def get_osu_api_token() -> int:
     url = "{}/oauth/token".format(osu_url)
     headers = {
         "Accept": "application/json",
@@ -51,8 +53,9 @@ async def get_osu_api_token() -> int:  # Set osu token in db and return expirati
     }
 
     async with aiohttp.ClientSession() as session:
-        async with session.post(url=url, data=json.dumps(body), headers=headers) as resp:
+        async with session.post(url=url, data=json.dumps(body), \
+                                headers=headers) as resp:
             response = json.loads(await resp.text())
-            print(response)
             set_api_key(response["access_token"])
             return response["expires_in"]
+
